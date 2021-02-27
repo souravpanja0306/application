@@ -38,7 +38,10 @@
                         </form>
                     </td>
                     <td>
-                        <a href="">Edit</a>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" class='btn btn-success btn-sm' value="Edit">
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}

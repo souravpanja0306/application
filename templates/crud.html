@@ -1,0 +1,17 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="alert alert-primary d-flex" role="alert">
+    <a href="/" class='btn'>Home</a>
+    <a href="/display" class='btn'>CRUD Display</a>
+</div>
+<div class='row container-fluid d-flex text-center mb-4'>
+    <h4 class='mt-2'>CRUD Application</h4>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{stu}}
+    <button type="submit" value="submit">Hi</button>
+</form>
+
+{% endblock content %}

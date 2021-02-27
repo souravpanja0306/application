@@ -1,0 +1,102 @@
+{% include 'base.html' %}
+
+{% block style%}
+{% endblock style %}
+
+
+{% block content %}
+<div class="alert alert-primary d-flex" role="alert">
+    <a href="/" class='btn'>Home</a>
+</div>
+<div class='row container-fluid d-flex text-center mb-4'>
+    <h4 class='mt-2'>COVID-19 CORONAVIRUS PANDEMIC</h4>
+    <h6 class='mt-2'>Last updated : {{global.Date}}</h6>
+</div>
+
+
+<div class='row container-fluid'>
+    <div class="col-6">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr class="table-warning">
+                    <th>SL. No.</th>
+                    <th>Country , Others</th>
+                    <th>Total Cases</th>
+                    <th>New Deaths</th>
+                    <th>Total Deaths</th>
+                    <th>New Recovered</th>
+                    <th>Total Recovered</th>
+                </tr>
+            </thead>
+            {% for gb in countries %}
+            <tbody>
+                <tr>
+                    <td>{{forloop.counter }}</td>
+                    <td>{{ gb.Country }}</td>
+                    <td>{{ gb.TotalConfirmed }}</td>
+                    <td>{{ gb.NewDeaths }}</td>
+                    <td>{{ gb.TotalDeaths}}</td>
+                    <td>{{ gb.NewRecovered}}</td>
+                    <td>{{ gb.TotalRecovered}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-2">
+        <div class="card mb-4">
+            <div class="card-header bg-danger">
+                <h6 class="text-light">Coronavirus Cases</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.TotalConfirmed}}</h5>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-warning">
+                <h6 class="text-light">New Cases</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.NewConfirmed}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card mb-4">
+            <div class="card-header bg-secondary">
+                <h6 class="text-light">Total Deaths</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.TotalDeaths}}</h5>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h6 class="text-light">New Deaths</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.NewDeaths}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card mb-4">
+            <div class="card-header bg-success">
+                <h6 class="text-light">Total Recovered</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.TotalRecovered}}</h5>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-info">
+                <h6 class="text-light">New Recovered</h6>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{global.NewRecovered}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

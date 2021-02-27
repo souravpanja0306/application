@@ -32,7 +32,10 @@
                     <td>{{disp.first_name}}</td>
                     <td>{{disp.last_name}}</td>
                     <td>
-                        <a href="">Delete</a>
+                        <form class="text-center" action="{% url 'delete' disp.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit"  value="Delete">
+                        </form>
                     </td>
                     <td>
                         <a href="">Edit</a>

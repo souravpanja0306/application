@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from .forms import student_form
 from .models import student
 import requests
@@ -24,8 +24,12 @@ def display(request):
     dis = student.objects.all()
     return render(request, "display.html", {'dis': dis})
 
-# def delete(request, pk):
-#     dele =
+def delete(request, id):
+    if request.method == 'POST':
+        data = student.objects.get(pk=id)
+        data.delete()
+        return HttpResponseRedirect('/display')
+    
 
 
 def covid(request):

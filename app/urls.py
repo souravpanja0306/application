@@ -8,5 +8,7 @@ urlpatterns = [
     path('display', views.display, name='display'),
     path('covid', views.covid, name='covid'),
     path('delete/<int:id>', views.delete, name='delete'),
+    path('cvbuilder', views.cvbuilder, name='cvbuilder'),
+    path('cvdisplay', views.cvdisplay, name='cvdisplay'),
 
 ]

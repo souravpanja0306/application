@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .forms import student_form
-from .models import student
+from .forms import student_form, cv_form
+from .models import student, cv
 import requests
 
 # Create your views here.
@@ -37,3 +37,19 @@ def covid(request):
         "https://api.covid19api.com/summary")
     data = response.json()
     return render(request, 'covid.html', {'countries': data['Countries'], 'global':data['Global']})
+
+
+
+def cvbuilder(request):
+    if request.method == 'POST':
+        cvv = cv_form(request.POST)
+        if cvv.is_valid():
+            cvv.save()
+        cvv = cv_form()
+    else:
+        cvv = cv_form()
+    return render(request, 'cvbuilder.html', {'cvv': cvv})
+
+def cvdisplay(request):
+    ccvv = cv.objects.all()
+    return render(request, 'cvdisplay.html', {'ccvv': ccvv})

@@ -10,5 +10,6 @@ urlpatterns = [
     path('delete/<int:id>', views.delete, name='delete'),
     path('cvbuilder', views.cvbuilder, name='cvbuilder'),
     path('cvdisplay', views.cvdisplay, name='cvdisplay'),
+    path('cvdelete/<int:id>', views.cvdelete, name='cvdelete'),
 
 ]

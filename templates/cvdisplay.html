@@ -9,43 +9,56 @@
     <a href="/" class='btn'>Home</a>
     <a href="/cvbuilder" class='btn'>Add New CV</a>
 </div>
+<div class='row container-fluid d-flex text-center mb-4'>
+    <h4 class='mt-2'>CV Display</h4>
+</div>
+
 <div class="row container-fluid">
-    <div class="col-10 offset-1">
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>Sl. No.</th>
-                    <th>Name</th>
-                    <th>About</th>
-                    <th>Job Title</th>
-                    <th>Company Name</th>
-                    <th>Location</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Description</th>
-                    <th>Education Qualification</th>
-                    <th>Skills</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for c in ccvv %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{c.name}}</td>
-                    <td>{{c.about}}</td>
-                    <td>{{c.job_title}}</td>
-                    <td>{{c.company_name}}</td>
-                    <td>{{c.location}}</td>
-                    <td>{{c.start_date}}</td>
-                    <td>{{c.end_date}}</td>
-                    <td>{{c.description}}</td>
-                    <td>{{c.education_qualification}}</td>
-                    <td>{{c.skills}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th>Sl. No.</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Job Title</th>
+                <th>Company Name</th>
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+                <th>Education</th>
+                <th>Skills</th>
+                <th>Actions</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in ccvv %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.about}}</td>
+                <td>{{c.job_title}}</td>
+                <td>{{c.company_name}}</td>
+                <td>{{c.location}}</td>
+                <td>{{c.start_date}}</td>
+                <td>{{c.end_date}}</td>
+                <td>{{c.description}}</td>
+                <td>{{c.education_qualification}}</td>
+                <td>{{c.skills}}</td>
+                <td>
+                    <form action="{% url 'cvdelete' c.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class='btn btn-danger btn-sm'>Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <button class='btn btn-success btn-sm'>Edit</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}

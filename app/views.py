@@ -53,3 +53,9 @@ def cvbuilder(request):
 def cvdisplay(request):
     ccvv = cv.objects.all()
     return render(request, 'cvdisplay.html', {'ccvv': ccvv})
+
+def cvdelete(request, id):
+    if request.method == 'POST':
+        cvdata = cv.objects.get(pk=id)
+        cvdata.delete()
+        return HttpResponseRedirect('/cvdisplay')
